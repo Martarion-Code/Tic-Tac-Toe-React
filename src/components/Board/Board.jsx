@@ -1,5 +1,3 @@
-import React from "react";
-import { useState, useEffect } from "react";
 import Square from "../Square/Square";
 import { useReducer } from "react";
 
@@ -28,8 +26,11 @@ function reducer(prevState, action) {
         ...prevState.stackContValHistory,
         action.data.val,
       ];
+      
       prevState.arrayTicTacToe[action.data.index] = action.data.val;
+      console.log(prevState.arrayTicTacToe)
       return {
+        arrHistoryTicTacToe: [...prevState.arrHistoryTicTacToe, [...prevState.arrayTicTacToe]],
         arrayTicTacToe: prevState.arrayTicTacToe,
         top: prevState.top + 1,
         stackContValHistory: prevState.stackContValHistory,
@@ -44,8 +45,8 @@ function Board() {
     arrayTicTacToe: new Array(8).fill(null),
     top: -1,
     stackContValHistory: [],
+    arrHistoryTicTacToe: [Array(8).fill(null)] 
   });
-
   function calculateWinner() {
     const lines = [
       [0, 1, 2],
