@@ -46,6 +46,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.title-and-board-cont{
+  display: flex;
+  flex-direction: column;
+}
 .container-square{
   max-width: 200px;
   display: flex;
@@ -63,3 +68,8 @@
   display: flex;
 }
 
+.history-cont{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}

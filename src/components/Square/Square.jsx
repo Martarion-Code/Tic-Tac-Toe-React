@@ -1,26 +1,10 @@
-// import React from 'react'
-import { useState } from 'react'
-function Square({top, handleSetStackContValHistoryAndArrTicTacToe, index, stackContValHistory, isWin }) {
 
-  const [value, setValue] = useState(null);
-  function pushVal(e){
-    if((top === 8) || (isWin !== null) || (value !== null)){
-      return;
-    }
-    if(top == -1){
-      handleSetStackContValHistoryAndArrTicTacToe("O", index);
-      setValue("O");
-    }else if(stackContValHistory[top] == "O"){
-      handleSetStackContValHistoryAndArrTicTacToe("X", index);
-      setValue("X");
-    }else if(stackContValHistory[top] == "X"){
-      handleSetStackContValHistoryAndArrTicTacToe("O", index);
-      setValue("O");
-    }
-  }
 
+// eslint-disable-next-line react/prop-types
+function Square({ handleSetStackContValHistoryAndArrTicTacToe, value, index }) {
+  
   return (
-    <button  onClick={pushVal} className='square__container-square'>{value}</button>
+    <button  onClick={handleSetStackContValHistoryAndArrTicTacToe} className='square__container-square' style={{backgroundColor:(value == "X" ? "red" : (value == "O") ? "yellow" : "") }} data-index={index} data-value={value == null ? null : value}>{value}</button>
   )
 }
 
