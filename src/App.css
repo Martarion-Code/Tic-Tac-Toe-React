@@ -39,34 +39,84 @@
 .read-the-docs {
   color: #888;
 } */
+
+* {
+  box-sizing: border-box;
+}
+
 .app{
+  color: #fff;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  background: rgb(88,75,255);
+background: -moz-radial-gradient(circle, rgba(88,75,255,1) 0%, rgba(93,89,250,1) 100%);
+background: -webkit-radial-gradient(circle, rgba(88,75,255,1) 0%, rgba(93,89,250,1) 100%);
+background: radial-gradient(circle, rgba(88,75,255,1) 0%, rgba(93,89,250,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#584bff",endColorstr="#5d59fa",GradientType=1);
+/* 
+background: rgb(93,89,250);
+background: -moz-radial-gradient(circle, rgba(93,89,250,1) 72%, rgba(89,83,167,1) 100%);
+background: -webkit-radial-gradient(circle, rgba(93,89,250,1) 72%, rgba(89,83,167,1) 100%);
+background: radial-gradient(circle, rgba(93,89,250,1) 72%, rgba(89,83,167,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5d59fa",endColorstr="#5953a7",GradientType=1); */
 }
 
-.title-and-board-cont{
+.game-cont{
   display: flex;
-  flex-direction: column;
+  gap: 200px;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+}
+
+.board-history-cont{
+  display: flex;
+  gap: 200px;
+  justify-content: center;
+  align-items: center;
 }
 .container-square{
   max-width: 200px;
   display: flex;
+  
   flex-wrap: wrap;
 }
 .square__container-square{
-  border: 1px solid #000;
+  border: 8px solid #fff;
   background: none;
   border-radius: 0;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
+  font-size: 2rem;
+  color: #fff;
+  /* margin: 0; */
+  margin: -4px;
+  padding: 0;
 }
+.square__container-square[data-index="0"] {
+  border-top-left-radius: 15px;
+}
+
+.square__container-square[data-index="2"] {
+  border-top-right-radius: 15px;
+}
+.square__container-square[data-index="6"] {
+  border-bottom-left-radius: 15px;
+}
+.square__container-square[data-index="8"] {
+  border-bottom-right-radius: 15px;
+}
+
 
 .row-square{
   display: flex;
 }
+
+
 
 .history-cont{
   display: flex;

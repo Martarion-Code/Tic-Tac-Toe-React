@@ -1,29 +1,30 @@
+import { useState } from "react";
+import "./App.css";
 
-import { useState } from 'react';
-import './App.css'
-
-import Board from './components/Board/Board';
+import Board from "./components/Board/Board";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [history, setHistory] = useState([new Array(8).fill(null)]);
-  const [currentArrTicTacToe, setCurrentArrTicTacToe] = useState(new Array(8).fill(null));
+  const [currentArrTicTacToe, setCurrentArrTicTacToe] = useState(
+    new Array(8).fill(null)
+  );
   const [isNextX, setIsNextX] = useState(true);
 
   const winner = calculateWinner();
   if (winner == null ? false : true) {
     console.log("winner is" + winner);
   }
-  
-  function jumpTo(e){
+
+  function jumpTo(e) {
     setCurrentIndex(Number(e.target.value));
     // const arr = history.slice(0, currentIndex + 1);
-    console.log(e.target.getAttribute("value"))
+    console.log(e.target.getAttribute("value"));
     setCurrentArrTicTacToe([...history[e.target.getAttribute("value")]]);
   }
 
-  function handlePlay(currentArr, index){
-     let val;
+  function handlePlay(currentArr, index) {
+    let val;
     if (isNextX == false) {
       val = "O";
     } else {
@@ -32,15 +33,18 @@ function App() {
     currentArr[index] = val;
     setIsNextX((prev) => !prev);
     setCurrentArrTicTacToe(currentArr);
-    setHistory(prev => [...prev.slice(0, currentIndex + 1), currentArr]);
+    setHistory((prev) => [...prev.slice(0, currentIndex + 1), currentArr]);
   }
 
-  function handleCurrentIndex(valIndex){
-    setCurrentIndex(valIndex)
+  function handleCurrentIndex(valIndex) {
+    setCurrentIndex(valIndex);
   }
-  
-  function handleArrHistory(currArrTicTacToe){
-    setHistory(prev => [...prev.slice(0, currentIndex + 1), [...currArrTicTacToe]]);
+
+  function handleArrHistory(currArrTicTacToe) {
+    setHistory((prev) => [
+      ...prev.slice(0, currentIndex + 1),
+      [...currArrTicTacToe],
+    ]);
   }
 
   function calculateWinner() {
@@ -67,29 +71,47 @@ function App() {
     return null;
   }
 
-
   return (
-
     <div className="app">
-      <div className="title-and-board-cont">
-        <h1>{`${winner == null ? "Next Player : " +  (isNextX == true ? "X" : "O") : `Player ${winner} is a winner`}`}</h1>
-        <Board  currentIndex={currentIndex}  handleCurrentIndex={handleCurrentIndex} handleArrHistory={handleArrHistory} currentArrTicTacToe={currentArrTicTacToe} handlePlay={handlePlay} winner={winner}></Board>
+      <h1 className="title">TIC TAC TOE</h1>
+      <div className="game-cont">
+        <div className="title-and-board-cont">
+          <h3 style={{ color: "#fff", fontSize: "2rem" }}>{`${
+            winner == null
+              ? "Next Player : " + (isNextX == true ? "X" : "O")
+              : `Player ${winner} is a winner`
+          }`}</h3>
+          <div className="board-history-cont">
+            <Board
+              currentIndex={currentIndex}
+              handleCurrentIndex={handleCurrentIndex}
+              handleArrHistory={handleArrHistory}
+              currentArrTicTacToe={currentArrTicTacToe}
+              handlePlay={handlePlay}
+              winner={winner}
+            ></Board>
+            <div className="history-cont">
+              {history.map((el, index) => {
+                if (index == 0) {
+                  return (
+                    <button key={index} onClick={jumpTo} value={index}>
+                      Jump to game start
+                    </button>
+                  );
+                } else {
+                  return (
+                    <button key={index} onClick={jumpTo} value={index}>
+                      Jump to different History {index}
+                    </button>
+                  );
+                }
+              })}
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="history-cont">
-          {
-            history.map((el, index) =>{
-              if(index == 0){
-                return  <button key={index} onClick={jumpTo} value={index}>Jump to game start</button>
-              }else{
-                return  <button key={index} onClick={jumpTo} value={index}>Jump to different History {index}</button>
-
-              }
-            })
-          }
-      </div>
-
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
