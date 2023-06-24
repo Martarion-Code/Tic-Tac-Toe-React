@@ -91,21 +91,24 @@ function App() {
               winner={winner}
             ></Board>
             <div className="history-cont">
-              {history.map((el, index) => {
-                if (index == 0) {
-                  return (
-                    <button key={index} onClick={jumpTo} value={index}>
-                      Jump to game start
-                    </button>
-                  );
-                } else {
-                  return (
-                    <button key={index} onClick={jumpTo} value={index}>
-                      Jump to different History {index}
-                    </button>
-                  );
-                }
-              })}
+              <div className="history-cont__heading">History</div>
+              <div className="history-cont__items">
+                {history.map((el, index) => {
+                  if (index == 0) {
+                    return (
+                      <button key={index} className="history-cont__items__btn" onClick={jumpTo} value={index}>
+                        Jump to game start
+                      </button>
+                    );
+                  } else {
+                    return (
+                      <button key={index}className="history-cont__items__btn"  onClick={jumpTo} value={index}>
+                        Jump to history {index}
+                      </button>
+                    );
+                  }
+                })}
+              </div>
             </div>
           </div>
         </div>
