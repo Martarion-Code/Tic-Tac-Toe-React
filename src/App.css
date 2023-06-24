@@ -50,6 +50,10 @@
   box-sizing: border-box;
 }
 
+html{
+  font-size: calc(15px + 0.390625vw);
+}
+
 .app{
   color: #fff;
   width: 100vw;
@@ -81,7 +85,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5d59fa",endCo
 
 .board-history-cont{
   display: flex;
-  gap: 200px;
+  gap: 10vw;
   justify-content: center;
   align-items: center;
 }
@@ -135,7 +139,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5d59fa",endCo
   width: 310px;
 
 }
+.title-and-board-cont__title{
+  font-size: 2rem;
 
+}
 .history-cont__heading{
   padding: 1rem;
   width: 100%;
@@ -169,4 +176,72 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5d59fa",endCo
 .history-cont__items__btn{
     background-color: var(--bg-clr);
     color: #fff;
+}
+
+
+
+@media (max-width: 767px) {
+  /* Add your styles here */
+  .app{
+    height: auto;
+  }
+  .app__title{
+    margin: 0;
+    margin-top: 10vh;
+    margin-bottom: 4vh;
+  }
+  .board-history-cont{
+
+    gap: 15vw;
+    flex-direction:column;
+
+  }
+
+  .history-cont{
+    
+    margin-bottom: 100px;
+
+  }
+
+  .container-square, .title-and-board-cont{
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app{
+    height: 100vh;
+  }
+
+  .board-history-cont{
+    gap: 18vw;
+  }
+}
+
+
+@media(max-width:320px){
+  .app{
+    width: auto;
+    min-height: 100vh;
+  }
+
+  .app__title{
+    font-size: calc(15px + 5vw);
+  }
+
+  .title-and-board-cont__title{
+    font-size: calc(15px + 3vw);
+  }
+
+  .square__container-square {
+    width: 24vw;
+    height: 24vw;
+  }
+
+  .history-cont {
+    width: 80vw;
+    /* height: 30vw; */
+  }
 }

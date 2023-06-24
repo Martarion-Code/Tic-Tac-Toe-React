@@ -73,10 +73,10 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="title">TIC TAC TOE</h1>
+      <h1 className="app__title">TIC TAC TOE</h1>
       <div className="game-cont">
         <div className="title-and-board-cont">
-          <h3 style={{ color: "#fff", fontSize: "2rem" }}>{`${
+          <h3 className="title-and-board-cont__title" style={{ color: "#fff"}}>{`${
             winner == null
               ? "Next Player : " + (isNextX == true ? "X" : "O")
               : `Player ${winner} is a winner`
